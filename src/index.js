@@ -1,11 +1,11 @@
 import routes from './routes/hotelRoutes.js';
 import express, { Router } from 'express';
-import cors from "cors";
+import cors from 'cors';
 
 const app = express();
 
 const corsOptions = {
-    origin: 'http://127.0.0.1:5500',
+    origin: 'http://127.0.0.1:5501',
     methods: 'GET, HEAD, PUT, PATCH, POST, DELETE',
     allowedHeaders: 'Content-Type,Authorization'
 };
