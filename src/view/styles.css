@@ -1,0 +1,17 @@
+#map {
+    height: 300px;
+    width: 400px;
+    border-radius: 10px;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    align-items: center;
+}
