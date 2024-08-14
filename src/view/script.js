@@ -65,6 +65,7 @@ button.addEventListener('click', () => {
     }).then(() => {
         console.log('Hotel registrado com sucesso!');
         alert('Hotel registrado com sucesso!');
+        listarHoteis();
     }).catch(error => {
         console.log('Erro ao registrar hotel:', error);
         alert('Erro ao registrar hotel. Consulte o console para mais detalhes.');
@@ -110,14 +111,14 @@ function displayHoteis (hotel) {
         const buttonDelete = document.createElement('button');
         const imgButtonDelete = document.createElement('img');
 
-        linkButtonEdit.href = `./editHotel.html?${e.id}`
+        linkButtonEdit.href = `./editHotel.html?id=${e.id}`
 
         imgButtonEdit.classList.add('IconEditDele');
         imgButtonEdit.id = 'icon-edit-hotel'
         imgButtonEdit.src = './icons/pen.png'
 
         imgButtonDelete.classList.add('IconEditDelete');
-        imgButtonDelete.id = 'icon-delete-hotel'
+        buttonDelete.id = 'icon-delete-hotel'
         imgButtonDelete.src = './icons/delete.png'
 
         id.textContent = e.id;
@@ -126,7 +127,9 @@ function displayHoteis (hotel) {
         latitude.textContent = e.localizacao.coordinates[1];
         longitude.textContent = e.localizacao.coordinates[0];
 
-        buttonEdit.appendChild(imgButtonEdit);
+        linkButtonEdit.appendChild(imgButtonEdit);
+        buttonEdit.appendChild(linkButtonEdit);
+        
         buttonDelete.appendChild(imgButtonDelete);
 
         buttonDelete.dataset.id = e.id;
@@ -146,6 +149,25 @@ function displayHoteis (hotel) {
     });
 }
 
+document.getElementById('dados').addEventListener('click', (event) => {
+    const button = event.target.closest('button');
+    const id = button.dataset.id;
+    fetch(`http://localhost:3000/hotel/${id}`, {
+        method: 'DELETE'
+    }).then(() => {
+        listarHoteis();
+    })
+});
+
+const buttonSearch = document.getElementById('buttonPesquisar');
+buttonSearch.addEventListener('click', () => {
+    const cnpj = document.getElementById('pesquisar').value;
+    fetch(`http://localhost:3000/hotel/${cnpj}`).then(response => response.json()
+    ).then(response => {
+        displayHoteis([response]);
+    }).catch(error  => {
+        console.log(error);
+    });
+});
+
 listarHoteis();
-
-
