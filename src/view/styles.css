@@ -68,6 +68,7 @@ body {
 }
 
 .formulario {
+    margin-top: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -110,7 +111,7 @@ body {
 	background: #FFFFFF;
 	color: #000000;
 	border: 1px solid #C4D1EB;
-	border-radius: 5px;
+	border-radius: 20px;
 	box-shadow: 3px 3px 2px 0px #E2E2E2;
 	transition: .3s ease;
 }
@@ -119,7 +120,7 @@ body {
     font-size: 18px;
 	padding: 5px 10px;
     margin-bottom: 15px;
-	width: 20%;
+	width: 40%;
 	padding-left: 35px;
 	outline: none;
 	background: #FFFFFF;
@@ -172,6 +173,12 @@ body {
     margin-right: 8px; 
     transform: scale(1); 
   }
+
+.tabela {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+}
 
 ::-webkit-scrollbar {
     width: 3px;
